@@ -4,7 +4,9 @@
 
 ###### From 2025 to ...
 ![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white) ![Public Relations Department of the CYLC & Student Union](https://img.shields.io/badge/Public_Relations_Department_of_the_CYLC_%26_Student_Union-003366?style=for-the-badge&logo=people&logoColor=003366)
+
 ![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white) ![Photography Club of the Communist Youth League Committee](https://img.shields.io/badge/Photography_Club_of_the_CYLC-003366?style=for-the-badge&logo=camera&logoColor=0033660)
+
 ![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white) ![Campus Publicity Team of the Communist Youth League Committee](https://img.shields.io/badge/Campus_Publicity_Team_of_the_Communist_Youth_League_Committee-003366?style=for-the-badge&logo=news&logoColor=0033660)
 
 ![My GitHub Stats](https://github-readme-stats.vercel.app/api?username=chenjj100419)
