@@ -1,6 +1,6 @@
 ### Hello I'm Ariakage from Hangzhou, Zhejiang, China
 ##### My Status
-![Jetbrains Student Developer](https://img.shields.io/badge/JetBrains_Student_Developer-000000?style=for-the-badge&logo=jetbrains&logoColor=white)
+![Jetbrains Student Developer](https://img.shields.io/badge/JetBrains_Student_Developer-000000?style=for-the-badge&logo=jetbrains&logoColor=white) \n
 ![My GitHub Stats](https://github-readme-stats.vercel.app/api?username=chenjj100419)
 ![Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=chenjj100419)
 #### Contact Me & My SNS
