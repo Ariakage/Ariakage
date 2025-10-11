@@ -9,7 +9,7 @@
 
 ![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white) ![Campus Publicity Team of the Communist Youth League Committee](https://img.shields.io/badge/Campus_Publicity_Team_of_the_Communist_Youth_League_Committee-003366?style=for-the-badge&logo=news&logoColor=0033660)
 
-![Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=chenjj100419) ![My GitHub Stats](https://github-readme-stats.vercel.app/api?username=chenjj100419)
+![Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ariakage) ![My GitHub Stats](https://github-readme-stats.vercel.app/api?username=ariakage)
 
 #### Contact Me & My SNS
 ![X Follow](https://img.shields.io/twitter/follow/ariakage_?style=for-the-badge&logo=X&logoColor=white) [![Email](https://img.shields.io/badge/Email-neohutao233%40icloud.com-007ACC?style=for-the-badge&logo=maildotru&logoColor=white)](mailto:neohutao233@icloud.com)
