@@ -1,6 +1,6 @@
 ### Hello I'm Ariakage from Hangzhou, Zhejiang, China
 ##### My Status
-![Jetbrains Student Developer](https://img.shields.io/badge/JetBrains_Student_Developer-000000?style=for-the-badge&logo=jetbrains&logoColor=white)
+![Jetbrains Student Developer](https://img.shields.io/badge/JetBrains_Student_Developer-000000?style=for-the-badge&logo=jetbrains&logoColor=white) ![ISIC Student](https://img.shields.io/badge/ISIC-Student-cyan?style=for-the-badge)
 
 ###### From 2025 to ...
 ![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white) ![Public Relations Department of the CYLC & Student Union](https://img.shields.io/badge/Public_Relations_Department_of_the_CYLC_%26_Student_Union-003366?style=for-the-badge&logo=people&logoColor=003366)
