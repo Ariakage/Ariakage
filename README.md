@@ -1,4 +1,4 @@
-### Hi there, I'm **Ariakage**. <img src="./trans.svg" style="vertical-align: -4px; margin-left: 4px;" height="40" alt="🏳️‍⚧️">
+### Hi there, I'm **Ariakage**. <img src="./trans.svg" alt="🏳️‍⚧️">
 #### **Shadow of Lament, Eternal Solitude**
 *Passionate about open-source, technology, and equality.*
 
