@@ -1,20 +1,45 @@
-### Hello I'm Ariakage from Hangzhou, Zhejiang, China
-##### My Status
-![Jetbrains Student Developer](https://img.shields.io/badge/JetBrains_Student_Developer-000000?style=for-the-badge&logo=jetbrains&logoColor=white) ![ISIC Student](https://img.shields.io/badge/ISIC-Student-cyan?style=for-the-badge) ![GitHub Student Developer](https://img.shields.io/badge/GitHub_Student_Developer-000000?style=for-the-badge&logo=github&logoColor=white)
+### Hi there, I'm **Ariakage**. <img src="https://abs.twimg.com/emoji/v2/svg/1f3f3-fe0f-200d-26a7-fe0f.svg" width="24" height="18" style="vertical-align: -4px; margin-left: 4px;" alt="🏳️‍⚧️"><span style="font-size: 0.8em">Trans.</span>
+#### **Shadow of Lament, Eternal Solitude**
+*Passionate about open-source, technology, and equality.*
 
-###### From 2025 to 2027(Maybe)
-![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white) ![Public Relations Department of the CYLC & Student Union](https://img.shields.io/badge/Public_Relations_Department_of_the_CYLC_%26_Student_Union-003366?style=for-the-badge&logo=people&logoColor=003366)
+A high school student at Hangzhou No. 11 High School, currently working at [SRInternet Studio](https://sr-studio.cn), with a primary focus on full-stack development and AI, and proficiency in DevOps, UI/UX Design, and Creative Planning. Actively involved in open-source projects and research, including FactLite and others.
 
-![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white) ![Photography Club of the Communist Youth League Committee](https://img.shields.io/badge/Photography_Club_of_the_CYLC-003366?style=for-the-badge&logo=camera&logoColor=0033660)
+Feel free to check out my [resume](/resume.md) to learn more about me.
 
-![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white) ![Campus Publicity Team of the Communist Youth League Committee](https://img.shields.io/badge/Campus_Publicity_Team_of_the_CYLC-003366?style=for-the-badge&logo=news&logoColor=0033660)
+---
 
-<!-- ![Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ariakage) ![My GitHub Stats](https://github-readme-stats.vercel.app/api?username=ariakage) -->
-##### Common languages: Python, C++, C#, Go, Java, HTML
-##### If you want to I learn some new languages, may I will learn it.
+## 🎓 Status
+![JetBrains Student Developer](https://img.shields.io/badge/JetBrains_Student_Developer-000000?style=for-the-badge&logo=jetbrains&logoColor=white)
+![GitHub Student Developer](https://img.shields.io/badge/GitHub_Student_Developer-000000?style=for-the-badge&logo=github&logoColor=white)
+![Tencent Cloud TDP](https://img.shields.io/badge/Tencent_Cloud-Tencent_Cloud_Developer_Pioneer-1E90FF?style=for-the-badge)
+![ISIC Student](https://img.shields.io/badge/ISIC-Student-cyan?style=for-the-badge)
 
-#### Contact Me & My SNS
-![X Follow](https://img.shields.io/twitter/follow/ariakage_?style=for-the-badge&logo=X&logoColor=white) [![Email](https://img.shields.io/badge/Email-neohutao233%40icloud.com-007ACC?style=for-the-badge&logo=maildotru&logoColor=white)](mailto:neohutao233@icloud.com)
-#### Other things
-> [!IMPORTANT]
-> Don't hesitate to give this project a star—it would be a great encouragement to me. Please remember to include the license when referencing or using this project.
+---
+
+## 📫 Contact & SNS.
+
+- 📧 **Email (mainly)**: `neohutao233 (at) icloud [dot] com`
+- 📧 **Email**: `ariakage233 (at) gmail [dot] com`
+- 𝕏 **[@Ariakage_](https://x.com/Ariakage_)**
+
+---
+
+## 🏫 School & Activities
+
+![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white)
+
+![Student Union](https://img.shields.io/badge/Student_Union-003366?style=for-the-badge&logo=people&logoColor=white)
+![Photography Club](https://img.shields.io/badge/Photography_Club-003366?style=for-the-badge&logo=camera&logoColor=white)
+
+---
+
+### 📊 GitHub Stats  
+
+| [![Ariakage's GitHub stats](https://github-readme-stats-neon-nine-18.vercel.app/api?username=Ariakage&show_icons=true&include_all_commits=true&theme=buefy&hide_border=true)](https://github.com/Ariakage) | [![Top Langs](https://github-readme-stats-neon-nine-18.vercel.app/api/top-langs/?username=Ariakage&layout=compact&theme=buefy&hide_border=true)](https://github.com/Ariakage) |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+
+---
+
+### 🚀 Tech Stack
+
+[![My Skills](https://skillicons.dev/icons?i=anaconda,androidstudio,apple,arch,arduino,bash,bootstrap,c,cs,cpp,clion,cloudflare,cmake,css,dart,debian,django,docker,dotnet,figma,flask,flutter,github,go,gradle,html,idea,js,jquery,kotlin,latex,linux,md,maven,mysql,mongodb,neovim,nextjs,nginx,nodejs,npm,opencv,ps,php,postman,powershell,pr,pycharm,py,pytorch,qt,raspberrypi,react,regex,sqlite,swift,svg,tailwind,tensorflow,ts,ubuntu,unity,unreal,visualstudio,vscode,vue,webstorm,windows,wordpres&perline=14)](https://skillicons.dev)
