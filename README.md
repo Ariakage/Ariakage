@@ -1,4 +1,4 @@
-### Hi there, I'm **Ariakage**. <img src="https://abs.twimg.com/emoji/v2/svg/1f3f3-fe0f-200d-26a7-fe0f.svg" width="24" height="18" style="vertical-align: -4px; margin-left: 4px;" alt="🏳️‍⚧️"><span style="font-size: 0.8em">Trans.</span>
+### Hi there, I'm **Ariakage**. <img src="https://abs.twimg.com/emoji/v2/svg/1f3f3-fe0f-200d-26a7-fe0f.svg" width="26" height="20" style="vertical-align: -4px; margin-left: 4px;" alt="🏳️‍⚧️"><span style="font-size: 0.85em; font-weight: 700; background: linear-gradient(90deg, #5BCEFA, #F5A9B8, #FFFFFF, #F5A9B8, #5BCEFA);-webkit-background-clip: text; color: transparent;">Trans</span>
 #### **Shadow of Lament, Eternal Solitude**
 *Passionate about open-source, technology, and equality.*
 
