@@ -1,5 +1,5 @@
 ### Hiya, I'm **Ariakage**. &nbsp;&nbsp;<img src="./trans.svg">
-English    [简体中文](/README_ZH_HANS.md)
+English | [简体中文](/README_ZH_HANS.md)
 #### **Shadow of Lament, Eternal Solitude**
 *Passionate about open-source, technology, and equality.*
 
