@@ -3,7 +3,9 @@ English | [简体中文](/README_ZH_HANS.md)
 #### **Shadow of Lament, Eternal Solitude**
 *Passionate about open-source, technology, and equality.*
 
-A high school student at Hangzhou No. 11 High School, currently working at [SRInternet Studio](https://sr-studio.cn), with a primary focus on full-stack development and AI, and proficiency in DevOps, UI/UX Design, and Creative Planning. Actively involved in open-source projects and research, including FactLite and others.
+A high school student at Hangzhou No. 11 High School, currently working at [SRInternet Studio](https://sr-studio.cn) and [_entropy(lamo.) & PolarisHackathon](https://github.com/PolarisHackathon), with a primary focus on full-stack development and AI, and proficiency in DevOps, UI/UX Design, and Creative Planning. Actively involved in open-source projects and research, including FactLite and others.
+
+**My goal is to pursue an interdisciplinary path in Neuroscience and Computer Science, focusing on Brain–Computer Interface (BCI) research.**
 
 Feel free to check out my [resume](/resume.md) to learn more about me.
 
