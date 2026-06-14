@@ -3,7 +3,7 @@
 #### **咏叹之影，永恒之寂**
 *热爱开源、科技与平等*
 
-我是来自杭州第十一中学的高中生，目前参与 [SRInternet Studio](https://sr-studio.cn) 和 [熵序前言(lamo) & 极星黑客松](https://github.com/PolarisHackathon) 的相关工作，主要方向为全栈开发与人工智能，并具备 DevOps、UI/UX 设计及创意策划能力。长期关注并参与开源项目与研究实践，包括 FactLite 等。
+我是来自杭州第十一中学的高中生，目前参与 [SRInternet Studio](https://sr-studio.cn) 和 [熵序前言(lamo.) & 极星黑客松](https://github.com/PolarisHackathon) 的相关工作，主要方向为全栈开发与人工智能，并具备 DevOps、UI/UX 设计及创意策划能力。长期关注并参与开源项目与研究实践，包括 FactLite 等。
 
 **我的目标是就读Neuronscience-ComputerScience专业研究BCI**(这看起来很酷的呢)
 
