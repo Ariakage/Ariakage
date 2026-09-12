@@ -1,0 +1,75 @@
+name: Refresh profile visuals
+
+on:
+  schedule:
+    - cron: '21 0 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/profile.yml'
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Test public data parsing, charts, and README assets
+        run: python -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Verify offline rendering
+        run: python scripts/update_profile.py --from-json assets/generated/profile-data.json --output "$RUNNER_TEMP/profile-check"
+
+  refresh:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Build cards from public GitHub data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/update_profile.py --username Ariakage
+      - name: Generate ice-blue contribution snakes
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
+        with:
+          github_user_name: Ariakage
+          outputs: |
+            assets/generated/snake-light.svg?color_snake=#58acf0&color_dots=#e7f0f9,#c7e7fb,#95cef4,#5eaee6,#e98ca8
+            assets/generated/snake-dark.svg?palette=github-dark&color_snake=#8ed4ff&color_dots=#1c2c40,#254967,#3676a0,#70bbed,#f1a0b9
+      - name: Respect reduced-motion preferences and validate generated files
+        run: |
+          python scripts/finalize_snake.py
+          python -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Save updated visuals
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/generated/
+          if git diff --cached --quiet; then
+            echo 'Profile visuals are already current.'
+            exit 0
+          fi
+          git commit -m 'chore: refresh profile visuals'
+          git pull --rebase origin main
+          git push origin HEAD:main

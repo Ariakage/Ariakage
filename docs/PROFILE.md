@@ -1,0 +1,73 @@
+# 主页维护说明
+
+这份 GitHub 个人主页以自设角色的银白、冰蓝、黑色与红蓝异瞳为视觉线索。英文入口为 `README.md`，中文入口为 `README_ZH_HANS.md`。
+
+## 文件
+
+- `assets/hero.png`：主页横幅，使用内置 imagegen 根据用户提供的自设参考图生成。
+- `assets/character-original.png`：用户提供的原始自设图，原样保留。
+- `assets/generated/`：仓库自托管的统计卡片、贡献趋势和贪吃蛇动画。
+- `scripts/update_profile.py`：只使用 Python 标准库，抓取公开数据并输出明暗两套 SVG。
+- `scripts/finalize_snake.py`：为贪吃蛇输出补充减少动态效果的媒体查询。
+- `.github/workflows/profile.yml`：检查、生成和更新流程。
+
+## 更新与启用
+
+工作流位于默认分支 `main` 后，在每天 **08:21（北京时间 / UTC+8）** 附近运行，也可以在 Actions → **Refresh profile visuals** → **Run workflow** 手动触发。GitHub 的定时任务可能延迟。修改生成脚本或工作流并推送到 main 也会触发更新。
+
+工作流使用 GitHub 自动提供的 `GITHUB_TOKEN`，不需要配置个人 PAT、Vercel 服务或额外服务器。统计获取和 SVG 生成全部成功后，才提交 `assets/generated/` 的变化。失败时主页仍使用最后一次成功提交的图片，错误可在 Actions 中查看。
+
+`validate` 任务只需读取仓库；`refresh` 任务只在 main 上运行，并获得提交生成图片所需的 `contents: write` 权限。所有第三方 Action 都固定到完整提交 SHA。若仓库的分支规则禁止机器人直接提交，需要按仓库规则改为生成更新 PR；不要关闭既有分支保护。
+
+GitHub 对长期无活动的公开仓库可能暂停定时工作流；可在 Actions 中重新启用。首次上线的图片已随仓库提供，更新任务暂时未运行也不会出现空白卡片。
+
+## 图表口径
+
+- **Contributions / Days creating**：从 GitHub 不带认证的公开贡献日历读取最近 365 个日期的精确贡献数与非零天数。贡献不等于提交次数；GitHub 有自己的贡献统计规则。
+- **Public repositories**：GitHub REST API 列出的全部公开自有仓库数，包含 fork。
+- **Stars**：公开、非 fork 的自有仓库获得的星标总数。
+- **Language palette**：公开、非 fork 的自有仓库中，GitHub Languages API 返回的代码字节数占比。显示前四种语言，其他合并为 Other。这不衡量熟练程度，也不代表编程时间。
+- **Activity**：最近 12 个自然周，周一为一周开始。当前周尚未结束，已经在图中标注。
+- **Snake**：使用 [Platane/snk](https://github.com/Platane/snk) 的 SVG-only Action，基于 GitHub 的贡献日历生成。日历范围由上游决定，可能与 365 天统计卡的起止边界略有差异。
+- 原始公开数据快照保存在 `assets/generated/profile-data.json`；里面不包含 token 或私有仓库资料。
+
+贡献日历 HTML 解析会检查日期完整性。若 GitHub 修改页面结构导致计数缺失，脚本会失败，而不是用零填补并发布错误数据。
+
+## 本地维护
+
+Python 3.12 或更新版本：
+
+```sh
+python3 scripts/update_profile.py
+python3 -m unittest discover -s scripts -p 'test_*.py' -v
+```
+
+公开 API 可以不带 token 使用，但有较低的请求限额。需要时可通过环境变量 `GITHUB_TOKEN` 提供 token；不要写进文件或提交到仓库。
+
+无需网络，重新绘制已有数据：
+
+```sh
+python3 scripts/update_profile.py --from-json assets/generated/profile-data.json
+```
+
+贪吃蛇由工作流中的固定版本 Action 生成，随后执行 `python3 scripts/finalize_snake.py`。完整维护代码没有额外 Python 依赖。
+
+## GitHub 显示兼容性
+
+README 使用 GitHub 支持的 Markdown、`picture` 和图片元素。图表是无脚本、无外部字体、无远程嵌入内容的 SVG；动效在图片内部实现，不依赖 README 执行 JavaScript。浏览器设置“减少动态效果”时会显示静态版本。
+
+明暗图表通过 `prefers-color-scheme` 切换。横幅保留统一的浅色艺术画面。GitHub 的图片缓存可能使刚更新的图表稍晚显示。
+
+技术栈图标来自 [Skill Icons](https://github.com/tandpfun/skill-icons)，已保存到仓库以避免外部图床临时故障。原始许可证保留在 [SKILL-ICONS-LICENSE](./SKILL-ICONS-LICENSE)，链接的替代文字同时列出工具名称。其他个人信息整理自原有 README / 简历与公开仓库；未改变原简历。
+
+## 横幅生成记录
+
+使用内置 imagegen 工具，以 `assets/character-original.png` 为参考图。最终生成提示词完整保存在 [hero-prompt.txt](./hero-prompt.txt)。角色原图作为用户素材保留；该仓库没有为原图或横幅另行授予开源许可。
+
+## 参考
+
+- [GitHub：管理个人资料 README](https://docs.github.com/en/account-and-profile/how-tos/profile-customization/managing-your-profile-readme)
+- [GitHub：计划事件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
+- [GitHub REST：用户仓库列表](https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user)
+- [GitHub：贡献计入规则](https://docs.github.com/en/account-and-profile/concepts/contributions-visible-on-your-profile)
+- [Platane/snk：贡献贪吃蛇](https://github.com/Platane/snk)

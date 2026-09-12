@@ -1,48 +1,100 @@
-### Hiya, I'm **Ariakage**. &nbsp;&nbsp;<img src="./trans.svg">
+<p align="center">
+  <img src="./assets/hero.png" width="100%" alt="Ariakage — Shadow of Lament, Eternal Solitude. Silver-haired original character with blue cat ears and red-blue eyes." />
+</p>
 
-#### **Shadow of Lament, Eternal Solitude**
-*Passionate about open-source, technology, and equality.*
+<p align="center">
+  <strong>English</strong> · <a href="./README_ZH_HANS.md">简体中文</a>
+</p>
 
-A high school student at Hangzhou No. 11 High School, currently working at [SRInternet Studio](https://sr-studio.cn) [Gravel Evolution & MoonStone Hackathon](https://moonstone.org.cn) and [_entropy & PolarisHackathon](https://github.com/PolarisHackathon), with a primary focus on full-stack development and AI, and proficiency in DevOps, UI/UX Design, and Creative Planning. Actively involved in open-source projects and research, including FactLite and others.
+<p align="center">
+  <a href="https://ariakage.com">Website</a> &nbsp; / &nbsp;
+  <a href="./resume.md">Resume</a> &nbsp; / &nbsp;
+  <a href="mailto:neohutao233@icloud.com">Email</a> &nbsp; / &nbsp;
+  <a href="https://x.com/Ariakage_">𝕏 @Ariakage_</a>
+</p>
 
-**My goal is to pursue an interdisciplinary path in Neuroscience and Computer Science, focusing on Brain–Computer Interface (BCI) research.**
+## Hiya, I'm Ariakage. <img src="./trans.svg" width="62" height="20" alt="Trans pride" />
 
-Feel free to check out my [resume](/resume.md) to learn more about me.
+**A student developer turning curious ideas into things you can interact with.**
+
+I'm a high school student at **Hangzhou No. 11 High School**, working across full-stack development, AI, and interaction design. I love open source, technology, and equality — and the little details that make software feel more human.
+
+- **Building** · AI companions, Live2D experiences, and tools for everyday creativity.
+- **Exploring** · Neuroscience × Computer Science, with a long-term interest in **brain–computer interfaces**.
+- **Creating with** · [SRInternet Studio](https://sr-studio.cn), [Gravel Evolution & MoonStone Hackathon](https://moonstone.org.cn), and [_entropy & PolarisHackathon](https://github.com/PolarisHackathon).
+- **Away from the keyboard** · Photography, literature, and imagining virtual worlds.
+
+> Code with curiosity. Create with care. Keep a little wonder.
+
+## Selected work
+
+| Project | A small glimpse inside |
+| :--- | :--- |
+| **[live2d-agent-kit](https://github.com/Ariakage/live2d-agent-kit)** | A Live2D creation workflow for Codex and AI agents, from PSD/PNG rigging to WebGL validation. `Python` `Live2D` |
+| **[protein-split-audit](https://github.com/Ariakage/protein-split-audit)** | Auditable protein-classification datasets, similarity-aware splits, and reproducible evaluation. `Python` `Research` |
+| **[gpx2track-softui](https://github.com/Ariakage/gpx2track-softui)** | Turn GPX tracks into self-contained, interactive Soft UI pages. `Go` `Visualization` |
+| **[PointShift](https://github.com/Ariakage/PointShift)** | A hackathon project built around the theme “Point.” at BuilderUP Hangzhou. `JavaScript` `Hackathon` |
+
+## My creative toolkit
+
+**Web & interfaces**
+
+[![Web and interface tools: TypeScript, JavaScript, React, Next.js, Vue, Tailwind, HTML, CSS, Figma](./assets/toolkit-web.svg)](https://skillicons.dev)
+
+**AI & backend**
+
+[![AI and backend tools: Python, PyTorch, TensorFlow, OpenCV, Flask, Django, Go, MySQL, SQLite](./assets/toolkit-ai.svg)](https://skillicons.dev)
+
+**Systems & making things**
+
+[![Systems and creative tools: Linux, Docker, Cloudflare, Bash, C++, C#, Flutter, Unity, Raspberry Pi](./assets/toolkit-systems.svg)](https://skillicons.dev)
+
+<details>
+<summary>A little more about student life</summary>
+
+Student Union · Photography Club · Campus Publicity Team at Hangzhou No. 11 High School.
+
+GitHub Student Developer · JetBrains Student Developer · Tencent Cloud Developer Pioneer · ISIC Student.
+
+More about my experience and projects in my **[resume](./resume.md)**.
+
+</details>
+
+## A little activity, a little progress
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/overview-dark.svg" />
+    <img src="./assets/generated/overview-light.svg" width="400" alt="GitHub overview: contributions and active days over the past 365 days, public repositories, and stars." />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/languages-dark.svg" />
+    <img src="./assets/generated/languages-light.svg" width="400" alt="Language distribution by code bytes in original public repositories." />
+  </picture>
+</p>
+
+<picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/generated/activity-mobile-dark.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/generated/activity-mobile-light.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/activity-dark.svg" />
+  <img src="./assets/generated/activity-light.svg" width="100%" alt="Animated line chart showing GitHub contributions per week over the last twelve weeks." />
+</picture>
+
+### Follow the little blue snake
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/snake-dark.svg" />
+  <img src="./assets/generated/snake-light.svg" width="100%" alt="An ice-blue snake winds through my GitHub contribution calendar." />
+</picture>
+
+<p align="center">
+  <sub>Built from my public GitHub profile · refreshed daily · <a href="./docs/PROFILE.md">How these visuals work</a></sub>
+</p>
 
 ---
 
-## 🎓 Status
-![JetBrains Student Developer](https://img.shields.io/badge/JetBrains_Student_Developer-000000?style=for-the-badge&logo=jetbrains&logoColor=white)
-![GitHub Student Developer](https://img.shields.io/badge/GitHub_Student_Developer-000000?style=for-the-badge&logo=github&logoColor=white)
-![Tencent Cloud TDP](https://img.shields.io/badge/Tencent_Cloud-Tencent_Cloud_Developer_Pioneer-1E90FF?style=for-the-badge)
-![ISIC Student](https://img.shields.io/badge/ISIC-Student-cyan?style=for-the-badge)
-
----
-
-## 📫 Contact & SNS.
-
-- 📧 **Primary Email**: `neohutao233 (at) icloud [dot] com`
-- 📧 **Email**: `ariakage233 (at) gmail [dot] com`
-- 𝕏 **[@Ariakage_](https://x.com/Ariakage_)**
-
----
-
-## 🏫 School & Activities
-
-![Hangzhou No.11 High School](https://img.shields.io/badge/Hangzhou_No.11_High_School-CC0000?style=for-the-badge&logo=education&logoColor=white)
-
-![Student Union](https://img.shields.io/badge/Student_Union-003366?style=for-the-badge&logo=people&logoColor=white)
-![Photography Club](https://img.shields.io/badge/Photography_Club-003366?style=for-the-badge&logo=camera&logoColor=white)
-
----
-
-### 📊 GitHub Stats  
-
-| [![Ariakage's GitHub stats](https://github-readme-stats-neon-nine-18.vercel.app/api?username=Ariakage&show_icons=true&include_all_commits=true&theme=buefy&hide_border=true)](https://github.com/Ariakage) | [![Top Langs](https://github-readme-stats-neon-nine-18.vercel.app/api/top-langs/?username=Ariakage&layout=compact&theme=buefy&hide_border=true)](https://github.com/Ariakage) |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-
----
-
-### 🚀 Tech Stack
-
-[![My Skills](https://skillicons.dev/icons?i=anaconda,androidstudio,apple,arch,arduino,bash,bootstrap,c,cs,cpp,clion,cloudflare,cmake,css,dart,debian,django,docker,dotnet,figma,flask,flutter,github,go,gradle,html,idea,js,jquery,kotlin,latex,linux,md,maven,mysql,mongodb,neovim,nextjs,nginx,nodejs,npm,opencv,ps,php,postman,powershell,pr,pycharm,py,pytorch,qt,raspberrypi,react,regex,sqlite,swift,svg,tailwind,tensorflow,ts,ubuntu,unity,unreal,visualstudio,vscode,vue,webstorm,windows,wordpres&perline=14)](https://skillicons.dev)
+<p align="center">
+  <strong>Let's make something thoughtful.</strong><br />
+  <a href="mailto:neohutao233@icloud.com">neohutao233@icloud.com</a> · <a href="mailto:ariakage233@gmail.com">ariakage233@gmail.com</a><br /><br />
+  <sub>Thanks for stopping by my little corner of GitHub. 🩵</sub>
+</p>
