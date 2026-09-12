@@ -73,7 +73,7 @@ class OutputTests(unittest.TestCase):
                 data["languages"] = languages
                 render(data, output)
                 cards = list(output.glob("*.svg"))
-                self.assertEqual(len(cards), 12)
+                self.assertEqual(len(cards), 24)
                 for card in cards:
                     svg = card.read_text()
                     ET.fromstring(svg)
@@ -90,7 +90,7 @@ class OutputTests(unittest.TestCase):
 
     def test_checked_in_images_are_self_contained_and_parseable(self):
         files = list((ROOT / "assets/generated").glob("*.svg"))
-        self.assertEqual(len(files), 14)
+        self.assertEqual(len(files), 26)
         for path in files:
             svg = path.read_text()
             ET.fromstring(svg)

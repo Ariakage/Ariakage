@@ -18,6 +18,8 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
 
+from card_strings import translator
+
 ROOT = Path(__file__).resolve().parents[1]
 THEMES = {
     "light": dict(bg="#f6faff", border="#dce8f4", text="#233954", muted="#5d728a", blue="#2889ce", pink="#d96280", grid="#e3edf7", fill="#d4eaff"),
@@ -201,36 +203,42 @@ def text(x, y, value, *, size=14, color="text", weight=400, extra=""):
     return f'<text x="{x}" y="{y}" class="{color}" font-size="{size}" font-weight="{weight}" {extra}>{escape(str(value))}</text>'
 
 
-def shell(width, height, theme, title, description, body):
+def shell(width, height, theme, title, description, body, locale="en"):
     p = THEMES[theme]
     css = "".join(f".{key}{{fill:{value}}}" for key, value in p.items())
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">
+    language = ' lang="zh-CN" xml:lang="zh-CN"' if locale == "zh" else ""
+    fonts = "-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+    if locale == "zh":
+        fonts = "-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif"
+    return f'''<svg{language} xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">
 <title id="title">{escape(title)}</title><desc id="description">{escape(description)}</desc>
-<style>text{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}}{css}
+<style>text{{font-family:{fonts}}}{css}
 .signal{{animation:breathe 3.6s ease-in-out infinite}}@keyframes breathe{{50%{{opacity:.3}}}}
 .trace{{stroke-dasharray:28 972;animation:travel 10s linear infinite}}@keyframes travel{{to{{stroke-dashoffset:-1000}}}}
 @media(prefers-reduced-motion:reduce){{.signal,.trace{{animation:none}}.trace{{display:none}}}}
 </style><rect x=".5" y=".5" width="{width - 1}" height="{height - 1}" rx="18" fill="{p['bg']}" stroke="{p['border']}"/>{body}</svg>\n'''
 
 
-def overview(data, theme):
+def overview(data, theme, locale="en"):
+    t = translator(locale)
     total = sum(day["count"] for day in data["days"])
     active = sum(day["count"] > 0 for day in data["days"])
-    body = text(28, 35, "01 / GITHUB AT A GLANCE", size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body = text(28, 35, t("01 / GITHUB AT A GLANCE"), size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
     body += '<circle cx="428" cy="30" r="4" class="blue signal"/>'
     for x, y, value, label, color in [(28, 96, total, "Contributions · past 365 days", "blue"), (254, 96, active, "Days creating · past 365 days", "pink"), (28, 188, data["public_repos"], "Public repositories", "text"), (254, 188, data["stars"], "Stars · original public repos", "text")]:
         body += text(x, y, f"{value:,}", size=40, weight=650, color=color)
-        body += text(x, y + 25, label, size=11, color="muted")
-    body += text(28, 249, f"PUBLIC PROFILE / UPDATED {data['updated']} UTC", size=9, color="muted", extra='letter-spacing=".8"')
-    return shell(460, 270, theme, "Ariakage's GitHub overview", f"{total} contributions and {active} active days over the past 365 days; {data['public_repos']} public repositories; {data['stars']} stars on original public repositories.", body)
+        body += text(x, y + 25, t(label), size=11, color="muted")
+    body += text(28, 249, t("PUBLIC PROFILE / UPDATED {updated} UTC", updated=data["updated"]), size=9, color="muted", extra='letter-spacing=".8"')
+    return shell(460, 270, theme, t("Ariakage's GitHub overview"), t("{total} contributions and {active} active days over the past 365 days; {repos} public repositories; {stars} stars on original public repositories.", total=total, active=active, repos=data["public_repos"], stars=data["stars"]), body, locale=locale)
 
 
-def language_mix(data, theme):
+def language_mix(data, theme, locale="en"):
+    t = translator(locale)
     entries = sorted(data["languages"].items(), key=lambda item: (-item[1], item[0]))
     total = sum(size for _, size in entries)
-    entries = entries[:4] + ([("Other", sum(size for _, size in entries[4:]))] if len(entries) > 4 else [])
-    body = text(28, 35, "02 / LANGUAGE PALETTE", size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
-    body += text(28, 62, "A little of everything I build with.", size=13, color="muted")
+    entries = entries[:4] + ([(t("Other"), sum(size for _, size in entries[4:]))] if len(entries) > 4 else [])
+    body = text(28, 35, t("02 / LANGUAGE PALETTE"), size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body += text(28, 62, t("A little of everything I build with."), size=13, color="muted")
     left = 28
     for i, (name, size) in enumerate(entries):
         width = size / total * 404 if total else 0
@@ -242,10 +250,10 @@ def language_mix(data, theme):
         body += text(x + 16, y, name, size=12)
         body += text(x + 188, y, f"{size / total:.1%}", size=11, color="muted", extra='text-anchor="end"')
     if not total:
-        body += text(28, 130, "No public language data yet.", color="muted")
-    body += text(28, 227, "By code bytes in original public repositories.", size=11, color="muted")
-    body += text(28, 247, "A snapshot of code, not a measure of proficiency.", size=10, color="muted")
-    return shell(460, 270, theme, "Languages in Ariakage's public repositories", "; ".join(f"{name}: {size / total:.1%}" for name, size in entries) if total else "No language data", body)
+        body += text(28, 130, t("No public language data yet."), color="muted")
+    body += text(28, 227, t("By code bytes in original public repositories."), size=11, color="muted")
+    body += text(28, 247, t("A snapshot of code, not a measure of proficiency."), size=10, color="muted")
+    return shell(460, 270, theme, t("Languages in Ariakage's public repositories"), "; ".join(f"{name}: {size / total:.1%}" for name, size in entries) if total else t("No language data"), body, locale=locale)
 
 
 def weekly_totals(days):
@@ -257,52 +265,55 @@ def weekly_totals(days):
     return list(sorted(weeks.items()))[-12:]
 
 
-def rating(data, theme):
+def rating(data, theme, locale="en"):
+    t = translator(locale)
     p = THEMES[theme]
     stats = data["collaboration"]
     rank = calculate_rank(stats)
-    body = text(28, 35, "03 / CONTRIBUTION RATING", size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
-    body += text(28, 60, "Every contribution leaves a mark.", size=13, color="muted")
+    body = text(28, 35, t("03 / CONTRIBUTION RATING"), size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body += text(28, 60, t("Every contribution leaves a mark."), size=13, color="muted")
     body += f'<circle cx="106" cy="151" r="57" fill="none" stroke="{p["grid"]}" stroke-width="8"/>'
     body += f'<circle cx="106" cy="151" r="57" pathLength="100" fill="none" stroke="{p["blue"]}" stroke-width="8" stroke-linecap="round" stroke-dasharray="{rank["score"]:.4f} 100" transform="rotate(-90 106 151)"/>'
     body += text(106, 150, rank["level"], size=43, weight=650, color="blue", extra='text-anchor="middle"')
-    body += text(106, 174, "GRS RANK", size=10, color="muted", extra='text-anchor="middle" letter-spacing="1.3"')
+    body += text(106, 174, t("GRS RANK"), size=10, color="muted", extra='text-anchor="middle" letter-spacing="1.3"')
     body += text(106, 233, f"{rank['score']:.1f} / 100", size=14, weight=600, color="pink", extra='text-anchor="middle"')
     for i, (key, label) in enumerate([("commits", "Commits · all time"), ("issues", "Issues opened · all time"), ("reviews", "PR reviews · past year"), ("contributed_repos", "Repos contributed · year"), ("stars", "Stars · all public repos"), ("followers", "Followers")]):
         y = 91 + i * 29
-        body += text(190, y, label, size=11, color="muted")
+        body += text(190, y, t(label), size=11, color="muted")
         body += text(432, y, f"{stats[key]:,}", size=14, weight=600, extra='text-anchor="end"')
-    body += text(28, 273, "GitHub Readme Stats formula · Public activity", size=10, color="muted")
-    body += text(28, 291, "Formula-based indicator, not an official GitHub rating.", size=10, color="muted")
-    desc = f"GitHub Readme Stats rank {rank['level']}; formula score {rank['score']:.1f} out of 100. " + "; ".join(f"{key}: {stats[key]}" for key in ("commits", "issues", "reviews", "contributed_repos", "stars", "followers"))
-    return shell(460, 312, theme, "Ariakage's contribution rating", desc, body)
+    body += text(28, 273, t("GitHub Readme Stats formula · Public activity"), size=10, color="muted")
+    body += text(28, 291, t("Formula-based indicator, not an official GitHub rating."), size=10, color="muted")
+    desc = t("GitHub Readme Stats rank {level}; formula score {score:.1f} out of 100. ", **rank) + "; ".join(f"{t(key)}: {stats[key]}" for key in ("commits", "issues", "reviews", "contributed_repos", "stars", "followers"))
+    return shell(460, 312, theme, t("Ariakage's contribution rating"), desc, body, locale=locale)
 
 
-def pull_requests(data, theme):
+def pull_requests(data, theme, locale="en"):
+    t = translator(locale)
     stats = data["collaboration"]
     merged_rate = stats["prs_merged"] / stats["prs"] if stats["prs"] else None
     rate_label = f"{merged_rate:.1%}" if merged_rate is not None else "—"
-    body = text(28, 35, "04 / PULL REQUESTS", size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body = text(28, 35, t("04 / PULL REQUESTS"), size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
     body += '<circle cx="428" cy="30" r="4" class="blue signal"/>'
     for x, y, value, label, color in [(28, 103, f"{stats['prs']:,}", "PRs opened · all time", "blue"), (254, 103, f"{stats['prs_merged']:,}", "Merged · all time", "pink"), (28, 201, f"{stats['prs_open']:,}", "Currently open", "text"), (254, 201, rate_label, "Merged / all PRs", "text")]:
         body += text(x, y, value, size=38, weight=650, color=color)
-        body += text(x, y + 26, label, size=11, color="muted")
-    body += text(28, 273, "PRs I authored across public repositories.", size=11, color="muted")
-    body += text(28, 291, f"UPDATED {data['updated']} UTC", size=9, color="muted", extra='letter-spacing=".8"')
-    return shell(460, 312, theme, "Ariakage's pull requests", f"{stats['prs']} public authored PRs; {stats['prs_merged']} merged; {stats['prs_open']} open; merge rate {rate_label}.", body)
+        body += text(x, y + 26, t(label), size=11, color="muted")
+    body += text(28, 273, t("PRs I authored across public repositories."), size=11, color="muted")
+    body += text(28, 291, t("UPDATED {updated} UTC", updated=data["updated"]), size=9, color="muted", extra='letter-spacing=".8"')
+    return shell(460, 312, theme, t("Ariakage's pull requests"), t("{prs} public authored PRs; {merged} merged; {open} open; merge rate {rate}.", prs=stats["prs"], merged=stats["prs_merged"], open=stats["prs_open"], rate=rate_label), body, locale=locale)
 
 
-def activity(data, theme, mobile=False):
+def activity(data, theme, mobile=False, locale="en"):
+    t = translator(locale)
     p = THEMES[theme]
     width, left, right = (480, 40, 448) if mobile else (960, 62, 920)
     weeks = weekly_totals(data["days"])
     top = max(10, math.ceil(max(value for _, value in weeks) / 10) * 10)
     points = [(left + i * (right - left) / 11, 229 - value / top * 126) for i, (_, value) in enumerate(weeks)]
     path = "M " + " L ".join(f"{x:.2f},{y:.2f}" for x, y in points)
-    body = text(30, 36, "05 / THE RHYTHM OF BUILDING", size=12, color="muted", weight=600, extra='letter-spacing="1.6"')
-    body += text(30, 65, "Small steps, a growing constellation.", size=19, weight=600)
+    body = text(30, 36, t("05 / THE RHYTHM OF BUILDING"), size=12, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body += text(30, 65, t("Small steps, a growing constellation."), size=19, weight=600)
     if not mobile:
-        body += text(930, 36, "LAST 12 WEEKS", size=11, color="blue", extra='text-anchor="end" letter-spacing="1"')
+        body += text(930, 36, t("LAST 12 WEEKS"), size=11, color="blue", extra='text-anchor="end" letter-spacing="1"')
     for fraction in (0, .5, 1):
         y = 229 - fraction * 126
         body += f'<path d="M{left} {y}H{right}" stroke="{p["grid"]}" stroke-dasharray="3 6"/>'
@@ -311,26 +322,28 @@ def activity(data, theme, mobile=False):
     body += f'<path d="{path}" fill="none" stroke="{p["blue"]}" stroke-width="2.5" stroke-linejoin="round"/>'
     body += f'<path class="trace" d="{path}" pathLength="1000" fill="none" stroke="{p["pink"]}" stroke-width="3.5" stroke-linecap="round"/>'
     for (day, value), (x, y) in zip(weeks, points):
-        body += f'<circle cx="{x}" cy="{y}" r="3.5" fill="{p["bg"]}" stroke="{p["blue"]}" stroke-width="2"><title>{day}: {value} contributions</title></circle>'
+        body += f'<circle cx="{x}" cy="{y}" r="3.5" fill="{p["bg"]}" stroke="{p["blue"]}" stroke-width="2"><title>{escape(t("{day}: {value} contributions", day=day, value=value))}</title></circle>'
         body += text(x, 252, day[5:].replace("-", "/"), size=10, color="muted", extra='text-anchor="middle"')
-    body += text(30, 282, "Contributions per week · Monday start · Current week is partial", size=10 if mobile else 11, color="muted")
+    body += text(30, 282, t("Contributions per week · Monday start · Current week is partial"), size=10 if mobile else 11, color="muted")
     if mobile:
-        body += text(30, 301, f"LAST 12 WEEKS / UPDATED {data['updated']} UTC", size=9, color="muted")
+        body += text(30, 301, t("LAST 12 WEEKS / UPDATED {updated} UTC", updated=data["updated"]), size=9, color="muted")
     else:
-        body += text(930, 286, f"UPDATED {data['updated']} UTC", size=10, color="muted", extra='text-anchor="end"')
-    return shell(width, 320 if mobile else 310, theme, "Ariakage's weekly contribution activity", "; ".join(f"Week of {day}: {value}" for day, value in weeks), body)
+        body += text(930, 286, t("UPDATED {updated} UTC", updated=data["updated"]), size=10, color="muted", extra='text-anchor="end"')
+    return shell(width, 320 if mobile else 310, theme, t("Ariakage's weekly contribution activity"), "; ".join(t("Week of {day}: {value}", day=day, value=value) for day, value in weeks), body, locale=locale)
 
 
 def render(data, output):
     cards = {}
-    for theme in THEMES:
-        for name, build in [("overview", overview), ("languages", language_mix), ("rating", rating), ("pull-requests", pull_requests), ("activity", activity)]:
-            svg = build(data, theme)
-            ET.fromstring(svg)  # Validate every image before replacing any existing output.
-            cards[f"{name}-{theme}.svg"] = svg
-        svg = activity(data, theme, mobile=True)
-        ET.fromstring(svg)
-        cards[f"activity-mobile-{theme}.svg"] = svg
+    for locale in ("en", "zh"):
+        suffix = "" if locale == "en" else "-zh"
+        for theme in THEMES:
+            for name, build in [("overview", overview), ("languages", language_mix), ("rating", rating), ("pull-requests", pull_requests), ("activity", activity)]:
+                svg = build(data, theme, locale=locale)
+                ET.fromstring(svg)  # Validate every image before replacing any existing output.
+                cards[f"{name}{suffix}-{theme}.svg"] = svg
+            svg = activity(data, theme, mobile=True, locale=locale)
+            ET.fromstring(svg)
+            cards[f"activity-mobile{suffix}-{theme}.svg"] = svg
     output.mkdir(parents=True, exist_ok=True)
     for name, svg in cards.items():
         temporary = output / (name + ".tmp")
@@ -349,7 +362,7 @@ def main():
         parser.error("Invalid GitHub username")
     data = json.loads(args.from_json.read_text()) if args.from_json else collect(args.username, datetime.now(timezone.utc).date())
     render(data, args.output)
-    print(f"Generated 12 cards for {data['username']} from public data dated {data['updated']}.")
+    print(f"Generated 24 cards (English + Chinese) for {data['username']} from public data dated {data['updated']}.")
 
 
 if __name__ == "__main__":

@@ -64,31 +64,31 @@ GitHub 学生开发者 · JetBrains 学生开发者 · 腾讯云开发者先锋 
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/overview-dark.svg" />
-    <img src="./assets/generated/overview-light.svg" width="400" alt="GitHub 统计：过去 365 天的贡献与活跃天数、公开仓库数，以及原创公开仓库获得的星标数。" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/overview-zh-dark.svg" />
+    <img src="./assets/generated/overview-zh-light.svg" width="400" alt="GitHub 统计：过去 365 天的贡献与活跃天数、公开仓库数，以及原创公开仓库获得的星标数。" />
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/languages-dark.svg" />
-    <img src="./assets/generated/languages-light.svg" width="400" alt="原创公开仓库中按代码字节数计算的语言分布。" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/languages-zh-dark.svg" />
+    <img src="./assets/generated/languages-zh-light.svg" width="400" alt="原创公开仓库中按代码字节数计算的语言分布。" />
   </picture>
 </p>
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/rating-dark.svg" />
-    <img src="./assets/generated/rating-light.svg" width="400" alt="贡献评分：按原 GitHub Readme Stats 算法计算的等级与圆环，以及提交、Issues、Reviews、参与仓库、星标和粉丝数。" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/rating-zh-dark.svg" />
+    <img src="./assets/generated/rating-zh-light.svg" width="400" alt="贡献评分：按原 GitHub Readme Stats 算法计算的等级与圆环，以及代码提交、议题、PR 审查、参与仓库、星标和关注者数量。" />
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/pull-requests-dark.svg" />
-    <img src="./assets/generated/pull-requests-light.svg" width="400" alt="我创建的公开 PR：历史总量、已合并数量、当前开启数量和合并率。" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/pull-requests-zh-dark.svg" />
+    <img src="./assets/generated/pull-requests-zh-light.svg" width="400" alt="我创建的公开 PR：历史总量、已合并数量、当前开启数量和合并率。" />
   </picture>
 </p>
 
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/generated/activity-mobile-dark.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/generated/activity-mobile-light.svg" />
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/activity-dark.svg" />
-  <img src="./assets/generated/activity-light.svg" width="100%" alt="最近十二周 GitHub 每周贡献趋势，红色光点沿冰蓝色折线流动。" />
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/generated/activity-mobile-zh-dark.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/generated/activity-mobile-zh-light.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/activity-zh-dark.svg" />
+  <img src="./assets/generated/activity-zh-light.svg" width="100%" alt="最近十二周 GitHub 每周贡献趋势，红色光点沿冰蓝色折线流动。" />
 </picture>
 
 ### 跟着冰蓝小蛇，逛逛我的贡献日历

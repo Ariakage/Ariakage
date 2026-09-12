@@ -8,6 +8,7 @@
 - `assets/character-original.png`：用户提供的原始自设图，原样保留。
 - `assets/generated/`：仓库自托管的统计卡片、贡献趋势和贪吃蛇动画。
 - `scripts/update_profile.py`：只使用 Python 标准库，抓取公开数据并输出明暗两套 SVG。
+- `scripts/card_strings.py`：卡片中文文案。中英两版共用数据和布局，标题、指标、图例、日期说明及无障碍描述分别本地化。
 - `scripts/finalize_snake.py`：为贪吃蛇输出补充减少动态效果的媒体查询。
 - `.github/workflows/profile.yml`：检查、生成和更新流程。
 
@@ -62,6 +63,8 @@ python3 scripts/update_profile.py --from-json assets/generated/profile-data.json
 README 使用 GitHub 支持的 Markdown、`picture` 和图片元素。图表是无脚本、无外部字体、无远程嵌入内容的 SVG；动效在图片内部实现，不依赖 README 执行 JavaScript。浏览器设置“减少动态效果”时会显示静态版本。
 
 明暗图表通过 `prefers-color-scheme` 切换。横幅保留统一的浅色艺术画面。GitHub 的图片缓存可能使刚更新的图表稍晚显示。
+
+每次更新同时生成 24 张统计卡片：中英文各 12 张，均含明暗主题和手机尺寸的趋势图。英文 README 使用原有文件名；中文 README 使用 `*-zh-light.svg` / `*-zh-dark.svg`，例如 `rating-zh-light.svg`。无文字的贪吃蛇动画和技术图标共用素材。编程语言名称、PR、GitHub 及评分等级等专有名称保留原写法；中文卡片使用系统中文字体回退，不加载外部字体。
 
 技术栈图标来自 [Skill Icons](https://github.com/tandpfun/skill-icons)，已保存到仓库以避免外部图床临时故障。原始许可证保留在 [SKILL-ICONS-LICENSE](./SKILL-ICONS-LICENSE)，链接的替代文字同时列出工具名称。其他个人信息整理自原有 README / 简历与公开仓库；未改变原简历。
 
