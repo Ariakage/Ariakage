@@ -14,6 +14,7 @@ from pathlib import Path
 import re
 import time
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
 
@@ -25,13 +26,16 @@ THEMES = {
 LANG_COLORS = ["#69b8ef", "#ec9bb3", "#90cfc6", "#b8acf1", "#adbfd1"]
 
 
-def fetch(url, *, json_response=True):
+def fetch(url, *, json_response=True, payload=None):
     headers = {"User-Agent": "Ariakage-profile", "Accept": "application/vnd.github+json" if json_response else "text/html", "Accept-Language": "en-US"}
     if url.startswith("https://api.github.com/") and os.environ.get("GITHUB_TOKEN"):
         headers["Authorization"] = "Bearer " + os.environ["GITHUB_TOKEN"]
+    if payload is not None:
+        headers["Content-Type"] = "application/json"
+    body_data = json.dumps(payload).encode() if payload is not None else None
     for attempt in range(3):
         try:
-            with urlopen(Request(url, headers=headers), timeout=30) as response:
+            with urlopen(Request(url, data=body_data, headers=headers), timeout=30) as response:
                 body = response.read().decode("utf-8")
             return json.loads(body) if json_response else body
         except (HTTPError, URLError, TimeoutError) as error:
@@ -40,6 +44,86 @@ def fetch(url, *, json_response=True):
             if attempt == 2:
                 raise
             time.sleep(2 ** attempt)
+
+
+def search_count(kind, query):
+    """Never turn an incomplete search response into a published statistic."""
+    for attempt in range(3):
+        result = fetch(f"https://api.github.com/search/{kind}?" + urlencode({"q": query + " is:public", "per_page": 1}))
+        if result.get("incomplete_results") is False:
+            count = result["total_count"]
+            if type(count) is not int or count < 0:
+                raise ValueError("Invalid GitHub search count")
+            return count
+        if attempt < 2:
+            time.sleep(2 ** attempt)
+    raise ValueError("GitHub search returned incomplete results; keeping previous cards.")
+
+
+def collect_collaboration(username, today, stars):
+    if not os.environ.get("GITHUB_TOKEN"):
+        raise ValueError("GITHUB_TOKEN is required for the contribution-rating GraphQL query. Offline rendering works without a token.")
+    queries = {
+        "commits": ("commits", f"author:{username}"),
+        "prs": ("issues", f"author:{username} type:pr"),
+        "prs_merged": ("issues", f"author:{username} type:pr is:merged"),
+        "prs_open": ("issues", f"author:{username} type:pr is:open"),
+        "issues": ("issues", f"author:{username} type:issue"),
+    }
+    # Keep search requests sequential to avoid GitHub's secondary rate limit.
+    stats = {name: search_count(*query) for name, query in queries.items()}
+    if stats["prs_merged"] + stats["prs_open"] > stats["prs"]:
+        raise ValueError("PR counts changed during collection; keeping previous cards.")
+    query = '''query($login:String!, $from:DateTime!, $after:String) {
+      user(login:$login) {
+        followers { totalCount }
+        repositoriesContributedTo(first:1, privacy:PUBLIC,
+          contributionTypes:[COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) { totalCount }
+        contributionsCollection(from:$from) {
+          pullRequestReviewContributions(first:100, after:$after) {
+            nodes { repository { isPrivate } }
+            pageInfo { hasNextPage endCursor }
+          }
+        }
+      }
+    }'''
+    stats.update(stars=stars, reviews=0)
+    after = None
+    while True:
+        result = fetch("https://api.github.com/graphql", payload={"query": query, "variables": {
+            "login": username, "from": str(today - timedelta(days=364)) + "T00:00:00Z", "after": after,
+        }})
+        if result.get("errors") or not result.get("data", {}).get("user"):
+            raise ValueError("GitHub GraphQL could not return complete contribution-rating data.")
+        user = result["data"]["user"]
+        stats["followers"] = user["followers"]["totalCount"]
+        stats["contributed_repos"] = user["repositoriesContributedTo"]["totalCount"]
+        reviews = user["contributionsCollection"]["pullRequestReviewContributions"]
+        # Filtering also keeps local runs with a broad token strictly public.
+        stats["reviews"] += sum(not item["repository"]["isPrivate"] for item in reviews["nodes"])
+        if not reviews["pageInfo"]["hasNextPage"]:
+            return stats
+        cursor = reviews["pageInfo"]["endCursor"]
+        if not cursor or cursor == after:
+            raise ValueError("Invalid GitHub review pagination cursor")
+        after = cursor
+
+
+def calculate_rank(stats):
+    """GitHub Readme Stats formula, include_all_commits=true (MIT).
+
+    Port of anuraghazra/github-readme-stats src/calculateRank.js at
+    54a7985aeefda00d5eadb55b80c17c7f976c37d2. See docs/GITHUB-README-STATS-LICENSE.
+    This is a formula-derived indicator, not an observed global leaderboard.
+    """
+    exponential = [("commits", 1000, 2), ("prs", 50, 3), ("issues", 25, 1), ("reviews", 2, 1)]
+    logarithmic = [("stars", 50, 4), ("followers", 10, 1)]
+    weighted = sum(weight * (1 - 2 ** (-stats[key] / median)) for key, median, weight in exponential)
+    weighted += sum(weight * (stats[key] / median) / (1 + stats[key] / median) for key, median, weight in logarithmic)
+    percentile = 100 * (1 - weighted / 12)
+    thresholds = [(1, "S"), (12.5, "A+"), (25, "A"), (37.5, "A-"), (50, "B+"), (62.5, "B"), (75, "B-"), (87.5, "C+"), (100, "C")]
+    level = next(level for threshold, level in thresholds if percentile <= threshold)
+    return {"level": level, "percentile": percentile, "score": 100 - percentile}
 
 
 class ContributionParser(HTMLParser):
@@ -107,6 +191,7 @@ def collect(username, today):
         "updated": today.isoformat(),
         "public_repos": len(repos),
         "stars": sum(repo["stargazers_count"] for repo in originals),
+        "collaboration": collect_collaboration(username, today, sum(repo["stargazers_count"] for repo in repos)),
         "languages": dict(languages.most_common()),
         "days": parser.calendar(today),
     }
@@ -172,6 +257,41 @@ def weekly_totals(days):
     return list(sorted(weeks.items()))[-12:]
 
 
+def rating(data, theme):
+    p = THEMES[theme]
+    stats = data["collaboration"]
+    rank = calculate_rank(stats)
+    body = text(28, 35, "03 / CONTRIBUTION RATING", size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body += text(28, 60, "Every contribution leaves a mark.", size=13, color="muted")
+    body += f'<circle cx="106" cy="151" r="57" fill="none" stroke="{p["grid"]}" stroke-width="8"/>'
+    body += f'<circle cx="106" cy="151" r="57" pathLength="100" fill="none" stroke="{p["blue"]}" stroke-width="8" stroke-linecap="round" stroke-dasharray="{rank["score"]:.4f} 100" transform="rotate(-90 106 151)"/>'
+    body += text(106, 150, rank["level"], size=43, weight=650, color="blue", extra='text-anchor="middle"')
+    body += text(106, 174, "GRS RANK", size=10, color="muted", extra='text-anchor="middle" letter-spacing="1.3"')
+    body += text(106, 233, f"{rank['score']:.1f} / 100", size=14, weight=600, color="pink", extra='text-anchor="middle"')
+    for i, (key, label) in enumerate([("commits", "Commits · all time"), ("issues", "Issues opened · all time"), ("reviews", "PR reviews · past year"), ("contributed_repos", "Repos contributed · year"), ("stars", "Stars · all public repos"), ("followers", "Followers")]):
+        y = 91 + i * 29
+        body += text(190, y, label, size=11, color="muted")
+        body += text(432, y, f"{stats[key]:,}", size=14, weight=600, extra='text-anchor="end"')
+    body += text(28, 273, "GitHub Readme Stats formula · Public activity", size=10, color="muted")
+    body += text(28, 291, "Formula-based indicator, not an official GitHub rating.", size=10, color="muted")
+    desc = f"GitHub Readme Stats rank {rank['level']}; formula score {rank['score']:.1f} out of 100. " + "; ".join(f"{key}: {stats[key]}" for key in ("commits", "issues", "reviews", "contributed_repos", "stars", "followers"))
+    return shell(460, 312, theme, "Ariakage's contribution rating", desc, body)
+
+
+def pull_requests(data, theme):
+    stats = data["collaboration"]
+    merged_rate = stats["prs_merged"] / stats["prs"] if stats["prs"] else None
+    rate_label = f"{merged_rate:.1%}" if merged_rate is not None else "—"
+    body = text(28, 35, "04 / PULL REQUESTS", size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body += '<circle cx="428" cy="30" r="4" class="blue signal"/>'
+    for x, y, value, label, color in [(28, 103, f"{stats['prs']:,}", "PRs opened · all time", "blue"), (254, 103, f"{stats['prs_merged']:,}", "Merged · all time", "pink"), (28, 201, f"{stats['prs_open']:,}", "Currently open", "text"), (254, 201, rate_label, "Merged / all PRs", "text")]:
+        body += text(x, y, value, size=38, weight=650, color=color)
+        body += text(x, y + 26, label, size=11, color="muted")
+    body += text(28, 273, "PRs I authored across public repositories.", size=11, color="muted")
+    body += text(28, 291, f"UPDATED {data['updated']} UTC", size=9, color="muted", extra='letter-spacing=".8"')
+    return shell(460, 312, theme, "Ariakage's pull requests", f"{stats['prs']} public authored PRs; {stats['prs_merged']} merged; {stats['prs_open']} open; merge rate {rate_label}.", body)
+
+
 def activity(data, theme, mobile=False):
     p = THEMES[theme]
     width, left, right = (480, 40, 448) if mobile else (960, 62, 920)
@@ -179,7 +299,7 @@ def activity(data, theme, mobile=False):
     top = max(10, math.ceil(max(value for _, value in weeks) / 10) * 10)
     points = [(left + i * (right - left) / 11, 229 - value / top * 126) for i, (_, value) in enumerate(weeks)]
     path = "M " + " L ".join(f"{x:.2f},{y:.2f}" for x, y in points)
-    body = text(30, 36, "03 / THE RHYTHM OF BUILDING", size=12, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body = text(30, 36, "05 / THE RHYTHM OF BUILDING", size=12, color="muted", weight=600, extra='letter-spacing="1.6"')
     body += text(30, 65, "Small steps, a growing constellation.", size=19, weight=600)
     if not mobile:
         body += text(930, 36, "LAST 12 WEEKS", size=11, color="blue", extra='text-anchor="end" letter-spacing="1"')
@@ -204,7 +324,7 @@ def activity(data, theme, mobile=False):
 def render(data, output):
     cards = {}
     for theme in THEMES:
-        for name, build in [("overview", overview), ("languages", language_mix), ("activity", activity)]:
+        for name, build in [("overview", overview), ("languages", language_mix), ("rating", rating), ("pull-requests", pull_requests), ("activity", activity)]:
             svg = build(data, theme)
             ET.fromstring(svg)  # Validate every image before replacing any existing output.
             cards[f"{name}-{theme}.svg"] = svg
@@ -229,7 +349,7 @@ def main():
         parser.error("Invalid GitHub username")
     data = json.loads(args.from_json.read_text()) if args.from_json else collect(args.username, datetime.now(timezone.utc).date())
     render(data, args.output)
-    print(f"Generated 8 cards for {data['username']} from public data dated {data['updated']}.")
+    print(f"Generated 12 cards for {data['username']} from public data dated {data['updated']}.")
 
 
 if __name__ == "__main__":

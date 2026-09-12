@@ -73,6 +73,17 @@ More about my experience and projects in my **[resume](./resume.md)**.
   </picture>
 </p>
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/rating-dark.svg" />
+    <img src="./assets/generated/rating-light.svg" width="400" alt="Contribution rating using the original GitHub Readme Stats formula, with commits, issues, reviews, contributed repositories, stars, and followers." />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/pull-requests-dark.svg" />
+    <img src="./assets/generated/pull-requests-light.svg" width="400" alt="My public pull requests: all-time total, merged, currently open, and merge rate." />
+  </picture>
+</p>
+
 <picture>
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/generated/activity-mobile-dark.svg" />
   <source media="(max-width: 600px)" srcset="./assets/generated/activity-mobile-light.svg" />

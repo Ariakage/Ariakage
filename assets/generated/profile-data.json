@@ -2,7 +2,18 @@
   "username": "Ariakage",
   "updated": "2026-09-12",
   "public_repos": 18,
-  "stars": 19,
+  "stars": 20,
+  "collaboration": {
+    "commits": 788,
+    "prs": 13,
+    "prs_merged": 12,
+    "prs_open": 0,
+    "issues": 22,
+    "stars": 20,
+    "reviews": 0,
+    "followers": 7,
+    "contributed_repos": 12
+  },
   "languages": {
     "HTML": 2636961,
     "Python": 2130145,

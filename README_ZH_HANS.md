@@ -73,6 +73,17 @@ GitHub 学生开发者 · JetBrains 学生开发者 · 腾讯云开发者先锋 
   </picture>
 </p>
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/rating-dark.svg" />
+    <img src="./assets/generated/rating-light.svg" width="400" alt="贡献评分：按原 GitHub Readme Stats 算法计算的等级与圆环，以及提交、Issues、Reviews、参与仓库、星标和粉丝数。" />
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/pull-requests-dark.svg" />
+    <img src="./assets/generated/pull-requests-light.svg" width="400" alt="我创建的公开 PR：历史总量、已合并数量、当前开启数量和合并率。" />
+  </picture>
+</p>
+
 <picture>
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/generated/activity-mobile-dark.svg" />
   <source media="(max-width: 600px)" srcset="./assets/generated/activity-mobile-light.svg" />
