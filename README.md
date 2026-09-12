@@ -21,7 +21,7 @@ Feel free to check out my [resume](/resume.md) to learn more about me.
 
 ## 📫 Contact & SNS.
 
-- 📧 **Email (mainly)**: `neohutao233 (at) icloud [dot] com`
+- 📧 **Primary Email**: `neohutao233 (at) icloud [dot] com`
 - 📧 **Email**: `ariakage233 (at) gmail [dot] com`
 - 𝕏 **[@Ariakage_](https://x.com/Ariakage_)**
 

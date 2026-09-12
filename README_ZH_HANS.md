@@ -21,7 +21,7 @@
 
 ## 📫 联系方式和社交媒体🩵🩵
 
-- 📧 **邮箱 (常用的)**: `neohutao233 (at) icloud [dot] com`
+- 📧 **主要邮箱**: `neohutao233 (at) icloud [dot] com`
 - 📧 **邮箱**: `ariakage233 (at) gmail [dot] com`
 - 𝕏 **[@Ariakage_](https://x.com/Ariakage_)**
 
