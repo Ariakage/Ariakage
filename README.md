@@ -15,6 +15,8 @@
 
 ## Hiya, I'm Ariakage. <img src="./trans.svg" width="62" height="20" alt="Trans pride" />
 
+> **Pronunciation**: English *Aria* /ˈɑːriə/ + Japanese *kage* /kaɡe/.
+
 **A student developer turning curious ideas into things you can interact with.**
 
 I'm a high school student at **Hangzhou No. 11 High School**, working across full-stack development, AI, and interaction design. I love open source, technology, and equality — and the little details that make software feel more human.
