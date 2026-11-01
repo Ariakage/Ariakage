@@ -86,6 +86,15 @@ GitHub 学生开发者 · JetBrains 学生开发者 · 腾讯云开发者先锋 
   </picture>
 </p>
 
+<p align="center">
+  <a href="https://ghfind.com/u/Ariakage?ref=badge">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://ghfind.com/api/card/mini/Ariakage?theme=dark" />
+      <img src="https://ghfind.com/api/card/mini/Ariakage?theme=light" alt="GitHub Roast 评分卡" width="440" />
+    </picture>
+  </a>
+</p>
+
 <picture>
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/generated/activity-mobile-zh-dark.svg" />
   <source media="(max-width: 600px)" srcset="./assets/generated/activity-mobile-zh-light.svg" />

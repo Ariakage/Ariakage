@@ -86,6 +86,15 @@ More about my experience and projects in my **[resume](./resume.md)**.
   </picture>
 </p>
 
+<p align="center">
+  <a href="https://ghfind.com/u/Ariakage?ref=badge">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://ghfind.com/api/card/mini/Ariakage?theme=dark" />
+      <img src="https://ghfind.com/api/card/mini/Ariakage?theme=light" alt="GitHub Roast score card" width="440" />
+    </picture>
+  </a>
+</p>
+
 <picture>
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/generated/activity-mobile-dark.svg" />
   <source media="(max-width: 600px)" srcset="./assets/generated/activity-mobile-light.svg" />
