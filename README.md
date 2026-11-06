@@ -9,7 +9,8 @@
 <p align="center">
   <a href="https://ariakage.com">Website</a> &nbsp; / &nbsp;
   <a href="./resume.md">Resume</a> &nbsp; / &nbsp;
-  <a href="mailto:neohutao233@icloud.com">Email</a> &nbsp; / &nbsp;
+  <a href="mailto:ariakage@outlook.com">Email</a> &nbsp; / &nbsp;
+  <a href="https://space.bilibili.com/397468524">Bilibili</a> &nbsp; / &nbsp;
   <a href="https://x.com/Ariakage_">𝕏 @Ariakage_</a>
 </p>
 
@@ -19,11 +20,13 @@
 
 **A student developer turning curious ideas into things you can interact with.**
 
-I'm a high school student at **Hangzhou No. 11 High School**, working across full-stack development, AI, and interaction design. I love open source, technology, and equality — and the little details that make software feel more human.
+I'm a high school student at **Hangzhou No. 11 High School**, working across full-stack development, AI agent harness development, and interaction design. I love open source, technology, and equality — and the little details that make software feel more human.
 
-- **Building** · AI companions, Live2D experiences, and tools for everyday creativity.
+- **Building** · AI agent harnesses, AI companions, Live2D experiences, and tools for everyday creativity.
 - **Exploring** · Neuroscience × Computer Science, with a long-term interest in **brain–computer interfaces**.
-- **Creating with** · [SRInternet Studio](https://sr-studio.cn), [Gravel Evolution & MoonStone Hackathon](https://moonstone.org.cn), and [_entropy & PolarisHackathon](https://github.com/PolarisHackathon).
+- **Working at** · [SoyingTech](https://soying.org) ([GitHub](https://github.com/SoyingTech)).
+- **Previously at** · [Gravel Evolution & MoonStone Hackathon](https://moonstone.org.cn).
+- **Creating with** · [SRInternet Studio](https://sr-studio.cn) and [_entropy & PolarisHackathon](https://github.com/PolarisHackathon).
 - **Away from the keyboard** · Photography, literature, and imagining virtual worlds.
 
 > Code with curiosity. Create with care. Keep a little wonder.
@@ -32,8 +35,10 @@ I'm a high school student at **Hangzhou No. 11 High School**, working across ful
 
 | Project | A small glimpse inside |
 | :--- | :--- |
+| **[saya-harness](https://github.com/Ariakage/saya-harness)** | A modular, event-driven AI Agent harness and execution runtime in Rust. `Rust` `Agent` |
 | **[live2d-agent-kit](https://github.com/Ariakage/live2d-agent-kit)** | A Live2D creation workflow for Codex and AI agents, from PSD/PNG rigging to WebGL validation. `Python` `Live2D` |
-| **[protein-split-audit](https://github.com/Ariakage/protein-split-audit)** | Auditable protein-classification datasets, similarity-aware splits, and reproducible evaluation. `Python` `Research` |
+| **[inspire-flow](https://github.com/AdvxPlora2026/inspire-flow)** | An AI creative collaboration platform turning fleeting ideas into deliverable projects, created at AdventureX 2026. `AI` `Hackathon` |
+| **[protein-split-audit](https://github.com/Ariakage/protein-split-audit)** | Minicamp 2026 AI+Life Sciences track champion. Auditable protein datasets and similarity-aware splits. `Python` `Research` |
 | **[gpx2track-softui](https://github.com/Ariakage/gpx2track-softui)** | Turn GPX tracks into self-contained, interactive Soft UI pages. `Go` `Visualization` |
 | **[PointShift](https://github.com/Ariakage/PointShift)** | A hackathon project built around the theme “Point.” at BuilderUP Hangzhou. `JavaScript` `Hackathon` |
 
@@ -117,6 +122,6 @@ More about my experience and projects in my **[resume](./resume.md)**.
 
 <p align="center">
   <strong>Let's make something thoughtful.</strong><br />
-  <a href="mailto:neohutao233@icloud.com">neohutao233@icloud.com</a> · <a href="mailto:ariakage233@gmail.com">ariakage233@gmail.com</a><br /><br />
+  <a href="mailto:ariakage@outlook.com">ariakage@outlook.com</a> · <a href="mailto:ariakage233@gmail.com">ariakage233@gmail.com</a><br /><br />
   <sub>Thanks for stopping by my little corner of GitHub. 🩵</sub>
 </p>

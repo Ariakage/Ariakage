@@ -9,7 +9,8 @@
 <p align="center">
   <a href="https://ariakage.com">个人网站</a> &nbsp; / &nbsp;
   <a href="./resume.md">我的简历</a> &nbsp; / &nbsp;
-  <a href="mailto:neohutao233@icloud.com">给我写信</a> &nbsp; / &nbsp;
+  <a href="mailto:ariakage@outlook.com">给我写信</a> &nbsp; / &nbsp;
+  <a href="https://space.bilibili.com/397468524">哔哩哔哩</a> &nbsp; / &nbsp;
   <a href="https://x.com/Ariakage_">𝕏 @Ariakage_</a>
 </p>
 
@@ -19,11 +20,13 @@
 
 **一名学生开发者，把脑海里好奇的念头，变成可以交互的小世界。**
 
-我来自**杭州市第十一中学**，主要探索全栈开发、人工智能与交互设计。热爱开源、科技与平等，也在意那些让软件更有温度的小细节。
+我来自**杭州市第十一中学**，主要探索全栈开发、AI Agent Harness 开发与交互设计。热爱开源、科技与平等，也在意那些让软件更有温度的小细节。
 
-- **正在创造** · AI 陪伴、Live2D 互动体验，以及服务日常创作的工具。
+- **正在创造** · AI Agent Harness、AI 陪伴、Live2D 互动体验，以及服务日常创作的工具。
 - **持续探索** · 神经科学 × 计算机科学，希望未来深入研究**脑机接口（BCI）**。
-- **一起做事** · [SRInternet Studio](https://sr-studio.cn)、[Gravel Evolution & MoonStone Hackathon](https://moonstone.org.cn)，以及 [熵序前言 & 极星黑客松](https://github.com/PolarisHackathon)。
+- **工作于** · [SoyingTech](https://soying.org)（[GitHub](https://github.com/SoyingTech)）。
+- **曾工作于** · [Gravel Evolution & MoonStone Hackathon](https://moonstone.org.cn)。
+- **一起做事** · [SRInternet Studio](https://sr-studio.cn)，以及 [熵序前言 & 极星黑客松](https://github.com/PolarisHackathon)。
 - **离开键盘** · 摄影、文学，还有关于虚拟世界的想象。
 
 > 带着好奇写代码，用心创造，留一点浪漫给世界。
@@ -32,8 +35,10 @@
 
 | 项目 | 关于它的一点点介绍 |
 | :--- | :--- |
+| **[saya-harness](https://github.com/Ariakage/saya-harness)** | 用 Rust 实现的模块化、事件驱动型 AI Agent Harness 与运行时。`Rust` `Agent` |
 | **[live2d-agent-kit](https://github.com/Ariakage/live2d-agent-kit)** | 面向 Codex 与 AI Agent 的 Live2D 创作流程，从 PSD/PNG 绑定到 WebGL 验证。`Python` `Live2D` |
-| **[protein-split-audit](https://github.com/Ariakage/protein-split-audit)** | 让蛋白质分类数据集、相似度感知划分与评估过程可审计、可复现。`Python` `科研` |
+| **[inspire-flow](https://github.com/AdvxPlora2026/inspire-flow)** | 在 AdventureX 2026 打造的 AI 创意协作平台，将灵感碎片转化为可交付的创意项目。`AI` `黑客松` |
+| **[protein-split-audit](https://github.com/Ariakage/protein-split-audit)** | Minicamp 2026 AI+生命科学赛道冠军。让蛋白质分类数据集、相似度感知划分与评估过程可审计、可复现。`Python` `科研` |
 | **[gpx2track-softui](https://github.com/Ariakage/gpx2track-softui)** | 把 GPX 轨迹变成一份可以独立打开、交互浏览的 Soft UI 页面。`Go` `可视化` |
 | **[PointShift](https://github.com/Ariakage/PointShift)** | 在 BuilderUP 杭州，围绕「Point.」主题完成的黑客松作品。`JavaScript` `黑客松` |
 
@@ -117,6 +122,6 @@ GitHub 学生开发者 · JetBrains 学生开发者 · 腾讯云开发者先锋 
 
 <p align="center">
   <strong>一起做点有意思、也有温度的东西吧。</strong><br />
-  <a href="mailto:neohutao233@icloud.com">neohutao233@icloud.com</a> · <a href="mailto:ariakage233@gmail.com">ariakage233@gmail.com</a><br /><br />
+  <a href="mailto:ariakage@outlook.com">ariakage@outlook.com</a> · <a href="mailto:ariakage233@gmail.com">ariakage233@gmail.com</a><br /><br />
   <sub>谢谢你来我的 GitHub 小角落坐坐，喵。🩵</sub>
 </p>

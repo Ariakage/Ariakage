@@ -70,6 +70,6 @@ jobs:
             echo 'Profile visuals are already current.'
             exit 0
           fi
-          git commit -m 'chore: refresh profile visuals'
+          git commit -m 'chore: refresh profile visuals [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
