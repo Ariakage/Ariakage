@@ -50,11 +50,11 @@ I'm a high school student at **Hangzhou No. 11 High School**, working across ful
 
 **AI & backend**
 
-[![AI and backend tools: Python, PyTorch, TensorFlow, OpenCV, Flask, Django, Go, MySQL, SQLite](./assets/toolkit-ai.svg)](https://skillicons.dev)
+[![AI and backend tools: Python, Rust, Go, Swift, PyTorch, Flask, Django, MySQL, SQLite](./assets/toolkit-ai.svg)](https://skillicons.dev)
 
 **Systems & making things**
 
-[![Systems and creative tools: Linux, Docker, Cloudflare, Bash, C++, C#, Flutter, Unity, Raspberry Pi](./assets/toolkit-systems.svg)](https://skillicons.dev)
+[![Systems and creative tools: Linux, Docker, Cloudflare, GitHub Actions, C++, C#, Flutter, Unity, Raspberry Pi](./assets/toolkit-systems.svg)](https://skillicons.dev)
 
 <details>
 <summary>A little more about student life</summary>

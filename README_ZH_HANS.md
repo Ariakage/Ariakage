@@ -50,11 +50,11 @@
 
 **AI 与后端**
 
-[![AI 与后端工具：Python、PyTorch、TensorFlow、OpenCV、Flask、Django、Go、MySQL、SQLite](./assets/toolkit-ai.svg)](https://skillicons.dev)
+[![AI 与后端工具：Python、Rust、Go、Swift、PyTorch、Flask、Django、MySQL、SQLite](./assets/toolkit-ai.svg)](https://skillicons.dev)
 
 **系统与创作**
 
-[![系统与创作工具：Linux、Docker、Cloudflare、Bash、C++、C#、Flutter、Unity、树莓派](./assets/toolkit-systems.svg)](https://skillicons.dev)
+[![系统与创作工具：Linux、Docker、Cloudflare、GitHub Actions、C++、C#、Flutter、Unity、树莓派](./assets/toolkit-systems.svg)](https://skillicons.dev)
 
 <details>
 <summary>再展开一点点校园生活</summary>
