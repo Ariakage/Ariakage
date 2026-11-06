@@ -27,7 +27,7 @@ GitHub 对长期无活动的公开仓库可能暂停定时工作流；可在 Act
 - **Contributions / Days creating**：从 GitHub 不带认证的公开贡献日历读取最近 365 个日期的精确贡献数与非零天数。贡献不等于提交次数；GitHub 有自己的贡献统计规则。
 - **Public repositories**：GitHub REST API 列出的全部公开自有仓库数，包含 fork。
 - **Stars**：公开、非 fork 的自有仓库获得的星标总数。
-- **Language palette**：公开、非 fork 的自有仓库中，GitHub Languages API 返回的代码字节数占比。显示前四种语言，其他合并为 Other。这不衡量熟练程度，也不代表编程时间。
+- **Language palette**：公开、非 fork 的自有仓库中，GitHub Languages API 返回的代码字节数占比。分为「逻辑与编程语言」（排除 HTML/CSS/Jupyter 等非逻辑标记代码）与「全部公开代码」双轨对比展示，各自列出前三种语言并将其他归并为 Other。这不衡量熟练程度，也不代表编程时间。
 - **Contribution rating**：复刻原 GitHub Readme Stats 的评分公式，沿用 `include_all_commits=true` 模式。等级为 C、C+、B-、B、B+、A-、A、A+、S；圆环对应 `100 - percentile`，同时显示该公式分数（满分 100）。这是基于固定公式的展示指标，不是 GitHub 官方评级，也不是实际用户排行榜。原算法及 MIT 许可证见下文。
 - **PRs / Merged / Currently open**：GitHub Search API 中本人创建的公开 PR，分别为历史总量、已合并总量和当前仍开启的数量。合并率 = 已合并 / 全部 PR，包含尚未关闭的 PR 在分母中；尚无 PR 时显示「—」。
 - **Commits / Issues opened**：公开仓库中本人创建的、被 GitHub 搜索索引到的历史提交 / Issue 总量，提交数不是贡献日历的贡献总数。搜索范围显式限定 `is:public`；如果搜索返回不完整结果，停止本次生成，保留上一版。

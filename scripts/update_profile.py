@@ -26,6 +26,12 @@ THEMES = {
     "dark": dict(bg="#101b2a", border="#253b52", text="#e7f2ff", muted="#a0b5cc", blue="#82caff", pink="#f49bb2", grid="#24374b", fill="#193a55"),
 }
 LANG_COLORS = ["#69b8ef", "#ec9bb3", "#90cfc6", "#b8acf1", "#adbfd1"]
+LOGIC_COLORS = ["#69b8ef", "#ec9bb3", "#90cfc6", "#adbfd1"]
+ALL_COLORS = ["#b8acf1", "#69b8ef", "#ec9bb3", "#adbfd1"]
+NON_LOGIC_LANGUAGES = {
+    "HTML", "CSS", "SCSS", "Less", "Sass",
+    "Jupyter Notebook", "TeX", "CMake", "Makefile", "Markdown", "Roff",
+}
 
 
 def fetch(url, *, json_response=True, payload=None):
@@ -234,26 +240,55 @@ def overview(data, theme, locale="en"):
 
 def language_mix(data, theme, locale="en"):
     t = translator(locale)
-    entries = sorted(data["languages"].items(), key=lambda item: (-item[1], item[0]))
-    total = sum(size for _, size in entries)
-    entries = entries[:4] + ([(t("Other"), sum(size for _, size in entries[4:]))] if len(entries) > 4 else [])
-    body = text(28, 35, t("02 / LANGUAGE PALETTE"), size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
-    body += text(28, 62, t("A little of everything I build with."), size=13, color="muted")
-    left = 28
-    for i, (name, size) in enumerate(entries):
-        width = size / total * 404 if total else 0
-        body += f'<rect x="{left:.2f}" y="83" width="{width:.2f}" height="12" fill="{LANG_COLORS[i]}"/>'
-        left += width
-        col, row = i % 2, i // 2
-        x, y = 28 + col * 216, 129 + row * 33
-        body += f'<circle cx="{x + 4}" cy="{y - 4}" r="4" fill="{LANG_COLORS[i]}"/>'
-        body += text(x + 16, y, name, size=12)
-        body += text(x + 188, y, f"{size / total:.1%}", size=11, color="muted", extra='text-anchor="end"')
-    if not total:
-        body += text(28, 130, t("No public language data yet."), color="muted")
-    body += text(28, 227, t("By code bytes in original public repositories."), size=11, color="muted")
-    body += text(28, 247, t("A snapshot of code, not a measure of proficiency."), size=10, color="muted")
-    return shell(460, 270, theme, t("Languages in Ariakage's public repositories"), "; ".join(f"{name}: {size / total:.1%}" for name, size in entries) if total else t("No language data"), body, locale=locale)
+    p = THEMES[theme]
+    all_raw = sorted(data["languages"].items(), key=lambda item: (-item[1], item[0]))
+    logic_raw = [item for item in all_raw if item[0] not in NON_LOGIC_LANGUAGES]
+
+    def prepare_entries(raw):
+        total = sum(size for _, size in raw)
+        if not total:
+            return [], 0
+        top = raw[:3]
+        rem = sum(size for _, size in raw[3:])
+        if rem > 0:
+            top.append((t("Other"), rem))
+        return top, total
+
+    logic_entries, logic_total = prepare_entries(logic_raw)
+    all_entries, all_total = prepare_entries(all_raw)
+
+    def build_section(title, entries, total, y_label, y_bar, y_legend, colors):
+        res = text(28, y_label, title, size=10, color="muted", weight=600, extra='letter-spacing="1"')
+        if not total:
+            res += text(28, y_bar + 16, t("No public language data yet."), size=11, color="muted")
+            return res
+        left = 28.0
+        for i, (name, size) in enumerate(entries):
+            w = size / total * 404 if total else 0
+            res += f'<rect x="{left:.2f}" y="{y_bar}" width="{w:.2f}" height="8" fill="{colors[i]}"/>'
+            left += w
+        for i, (name, size) in enumerate(entries):
+            col, row = i % 2, i // 2
+            bx = 28 if col == 0 else 236
+            ex = 204 if col == 0 else 432
+            cy = y_legend + row * 16
+            res += f'<circle cx="{bx + 4}" cy="{cy - 4}" r="3.5" fill="{colors[i]}"/>'
+            res += text(bx + 14, cy, name, size=11)
+            res += text(ex, cy, f"{size / total:.1%}" if total else "0%", size=11, color="muted", extra='text-anchor="end"')
+        return res
+
+    body = text(28, 33, t("02 / LANGUAGE PALETTE"), size=11, color="muted", weight=600, extra='letter-spacing="1.6"')
+    body += text(432, 33, t("LOGIC VS. ALL CODE"), size=10, color="blue", extra='text-anchor="end" letter-spacing=".8"')
+    body += build_section(t("LOGIC & PROGRAMMING"), logic_entries, logic_total, 54, 62, 84, LOGIC_COLORS)
+    body += build_section(t("ALL CODE BY BYTES"), all_entries, all_total, 122, 130, 152, ALL_COLORS)
+    body += f'<path d="M28 198H432" stroke="{p["grid"]}" stroke-dasharray="3 6"/>'
+    body += text(28, 224, t("Logic excludes markup/styling · All shows total code bytes."), size=10, color="muted")
+    body += text(28, 244, t("A snapshot of code, not a measure of proficiency."), size=10, color="muted")
+
+    desc_logic = "Logic: " + ", ".join(f"{name}: {size / logic_total:.1%}" for name, size in logic_entries) if logic_total else t("No language data")
+    desc_all = "All: " + ", ".join(f"{name}: {size / all_total:.1%}" for name, size in all_entries) if all_total else t("No language data")
+    desc = f"{desc_logic}; {desc_all}"
+    return shell(460, 270, theme, t("Languages in Ariakage's public repositories"), desc, body, locale=locale)
 
 
 def weekly_totals(days):

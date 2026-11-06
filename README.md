@@ -76,7 +76,7 @@ More about my experience and projects in my **[resume](./resume.md)**.
   </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/languages-dark.svg" />
-    <img src="./assets/generated/languages-light.svg" width="400" alt="Language distribution by code bytes in original public repositories." />
+    <img src="./assets/generated/languages-light.svg" width="400" alt="Language distribution by code bytes in original public repositories, split into logic languages and total code." />
   </picture>
 </p>
 

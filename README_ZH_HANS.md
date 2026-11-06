@@ -76,7 +76,7 @@ GitHub 学生开发者 · JetBrains 学生开发者 · 腾讯云开发者先锋 
   </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/languages-zh-dark.svg" />
-    <img src="./assets/generated/languages-zh-light.svg" width="400" alt="原创公开仓库中按代码字节数计算的语言分布。" />
+    <img src="./assets/generated/languages-zh-light.svg" width="400" alt="原创公开仓库中的代码语言分布，分为逻辑语言与全部代码两部分。" />
   </picture>
 </p>
 
