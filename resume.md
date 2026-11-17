@@ -97,9 +97,9 @@ An AI companion application combining Galgame-style nurturing mechanics with emo
 - Underlying safety system: passively monitors user activity and triggers graded alerts if prolonged inactivity is detected.  
 - Independently built full-stack architecture and interactive frontends.
 
-**ProteinSplitAudit (蛋白质模型审计流程)** *(Minicamp 2026 Changsha / LEV0 Wuhan)*  
+**ProteinSplitAudit (蛋白质模型审计流程)** *(LEV0 Minicamp 2026 Changsha)*  
 *Award*: **Champion — AI + Life Sciences Track** (AI+生命科学赛道冠军); nominated to AI Skillathon 2026.  
-- Addressed whether traditional random train/test splits overestimate protein enzyme classification models due to sequence similarity leakage.  
+- Addressed whether traditional random train/test splits overestimate the generalization of protein function classification models due to sequence similarity leakage.  
 - Built similarity-aware clustering splits, reproducible evaluation harnesses, and audit reporting.  
 - [GitHub: Ariakage/protein-split-audit](https://github.com/Ariakage/protein-split-audit)
 
@@ -145,7 +145,7 @@ A lightweight, gesture-driven learning platform with a "Magnetic" UI concept.
 - **Moonshot48 26.1 & 26.2** (Group 9 「磁习 Mag」)
 - **BuilderUP Hangzhou 2606** (PointShift — supported by 4 teams)
 - **NextStep2026 Wuhan / Hubei** (Team Hard Landing Mars — VBTI)
-- **Minicamp 2026 Changsha** (ProteinSplitAudit — **Track Champion**)
+- **LEV0 Minicamp 2026 Changsha** (ProteinSplitAudit — **Track Champion**)
 - **AdventureX 2026** (InspireFlow — Creator AI Collaboration Platform)
 - **AI Skillathon (智极松) 2026**
 - **MoonStone Hackathon Series** (Co-Initiator of MoonStone 2026, MoonStone DreamUp 2026 Shanghai & MoonStone 2027; Video Director & Visual Lead)
@@ -155,7 +155,7 @@ A lightweight, gesture-driven learning platform with a "Magnetic" UI concept.
 ## Awards & Achievements
 
 ### **Computer Science & Technology**
-- **2026** — **Champion (AI + Life Sciences Track)**, LEV0 Minicamp Wuhan 2026 Hackathon (*ProteinSplitAudit*)
+- **2026** — **Champion (AI + Life Sciences Track)**, LEV0 Minicamp Changsha 2026 Hackathon (*ProteinSplitAudit*)
 - **2026** — **Semi-finalist**, AI Skillathon 2026 (智极松 2026 晋级半决赛 · 后期主动放弃)
 - **2026** — BuilderUP Hangzhou Station 2606 (*Supported by 4 teams*)
 - **2025** — **3rd Prize**, Hangzhou Primary & Secondary School Coding Activity & Code Challenge (杭州市中小学生科技节编程挑战赛)
