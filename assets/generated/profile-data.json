@@ -1,37 +1,37 @@
 {
   "username": "Ariakage",
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "public_repos": 38,
-  "stars": 80,
+  "stars": 81,
   "collaboration": {
-    "commits": 1555,
+    "commits": 1657,
     "prs": 46,
     "prs_merged": 42,
     "prs_open": 3,
     "issues": 22,
-    "stars": 80,
+    "stars": 81,
     "reviews": 0,
-    "followers": 10,
+    "followers": 11,
     "contributed_repos": 17
   },
   "languages": {
-    "Rust": 9286365,
-    "Zig": 6875264,
-    "Python": 4433290,
+    "Rust": 10861375,
+    "Zig": 8778146,
+    "Python": 4802649,
     "HTML": 2755701,
+    "TypeScript": 1090292,
+    "Metal": 1041746,
     "Swift": 1029576,
-    "TypeScript": 984368,
     "CSS": 920007,
     "Jupyter Notebook": 684246,
-    "Metal": 613432,
     "JavaScript": 477045,
     "Go": 297482,
     "TeX": 198333,
-    "Objective-C": 141027,
+    "Objective-C": 144815,
+    "Assembly": 112274,
     "Kotlin": 92810,
-    "C": 88017,
+    "C": 89899,
     "Vue": 81766,
-    "Assembly": 71506,
     "PHP": 64075,
     "Java": 40818,
     "Shell": 37960,
@@ -47,10 +47,6 @@
     "Perl": 552
   },
   "days": [
-    {
-      "date": "2025-11-24",
-      "count": 0
-    },
     {
       "date": "2025-11-25",
       "count": 0
@@ -1493,11 +1489,11 @@
     },
     {
       "date": "2026-11-20",
-      "count": 54
+      "count": 61
     },
     {
       "date": "2026-11-21",
-      "count": 39
+      "count": 49
     },
     {
       "date": "2026-11-22",
@@ -1505,7 +1501,11 @@
     },
     {
       "date": "2026-11-23",
-      "count": 18
+      "count": 26
+    },
+    {
+      "date": "2026-11-24",
+      "count": 77
     }
   ]
 }
